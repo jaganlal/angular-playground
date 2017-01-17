@@ -11,15 +11,14 @@
         views: {
           'nav': {
             templateUrl: './app/nav/nav.html'
-            // template: "<div class='nav'> Navigation Content </div>"
           }, 
           '': {
-            templateUrl: './app/content/main-content.html'
-            // template: "<h1> content </h1>"
+            templateUrl: './app/content/main-content.html', 
+            controller: 'MainContentController', 
+            controllerAs: 'vm'
           }, 
           'footer': {
             templateUrl: './app/footer/footer.html'
-            // template: "<h1> footer </h1>"
           }
         }
       });
