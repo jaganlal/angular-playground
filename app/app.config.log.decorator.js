@@ -8,7 +8,7 @@ angular.module('jtAngularPlayground')
   .config(['$provide', function($provide) {
     $provide.decorator('$log', ['$delegate',
       function($delegate) {
-        var $log, enabled = false;
+        var $log, enabled = true;
 
         $log = {
           debugEnabled: function(flag) {
