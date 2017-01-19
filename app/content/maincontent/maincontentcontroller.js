@@ -13,14 +13,9 @@
       var hr = timeselected.format('h:mm A');
       var hrplus1 = timeselected.add(1, 'h').format('h:mm A');
 
-      // var ct = new timingFactory();
-      // ct.timing = hr + " - " + hrplus1;
-      // ct.status = status || 'Schedule';
-
-      var ct = {
-        timing: hr + " - " + hrplus1,
-        status: status || 'Schedule'
-      }
+      var ct = new timingFactory();
+      ct.timing = hr + " - " + hrplus1;
+      ct.status = status || 'Schedule';
 
       this.timeAdded = moment(timeselected);
 

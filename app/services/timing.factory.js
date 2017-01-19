@@ -2,11 +2,9 @@
   'use strict';
 
   function timing() {
-    return {
-      // this.timing = '';
-      // this.status = 'Schedule';
-      timing: '', 
-      status: ''
+    return function timingObject() {
+      this.timing = '';
+      this.status = 'Schedule';
     }
   }
 
