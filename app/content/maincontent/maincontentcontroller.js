@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  function MainContentController($log) {
+  function MainContentController($log, timingFactory, timingService) {
     this.today = moment().format('MMM Do YYYY, hh:mm:ss a');
     this.classTimings = [];
     this.timeAdded = moment();
@@ -12,6 +12,10 @@
       timeselected.minutes(0);
       var hr = timeselected.format('h:mm A');
       var hrplus1 = timeselected.add(1, 'h').format('h:mm A');
+
+      // var ct = new timingFactory();
+      // ct.timing = hr + " - " + hrplus1;
+      // ct.status = status || 'Schedule';
 
       var ct = {
         timing: hr + " - " + hrplus1,
@@ -30,6 +34,6 @@
     }
   }
 
-  MainContentController.$inject = ['$log'];
+  MainContentController.$inject = ['$log', 'timingFactory', 'timingService'];
   angular.module('jtAngularPlayground').controller('MainContentController', MainContentController);
 }());

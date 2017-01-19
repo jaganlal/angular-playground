@@ -34,6 +34,6 @@
     // controller: timingsController
   }
 
-  timings.$inject = ['$log'];
+  timingsController.$inject = ['$log'];
   angular.module('jtAngularPlayground').component('timings', timings);
 }());

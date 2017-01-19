@@ -13,8 +13,24 @@
             templateUrl: './app/nav/nav.html'
           }, 
           '': {
-            templateUrl: './app/content/main-content.html', 
+            templateUrl: './app/content/maincontent/main-content.html', 
             controller: 'MainContentController', 
+            controllerAs: 'vm'
+          }, 
+          'footer': {
+            templateUrl: './app/footer/footer.html'
+          }
+        }
+      })
+      .state('almanac', {
+        url: '/almanac', 
+        views: {
+          'nav': {
+            templateUrl: './app/nav/nav.html'
+          }, 
+          '': {
+            templateUrl: './app/content/tabcontent/tab-content.html', 
+            controller: 'TabContentController', 
             controllerAs: 'vm'
           }, 
           'footer': {
