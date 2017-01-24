@@ -1,10 +1,25 @@
 <div class="tab-content">
   <tabs selected="0">
     <tab label="Tab 1">
-      Tab 1 contents!
+      <h6> $parsers &amp; $formatters </h6>
+      <div ng-form="zipForm">
+        <input zipcode type="text" name="zc" ng-model="vm.zipcode" required />
+        {{vm.zipcode}}
+        <div ng-messages="zipForm.zc.$error" ng-show="zipForm.zc.$dirty" ng-if="zipForm.zc.$touched">
+          <div ng-message="required">"Zipcode is required"</div>
+          <div ng-message="is_valid">"Invalid zipcode"</div>
+        </div>
+      </div>
      </tab>
      <tab label="Tab 2">
-      Tab 2 contents!
+      <h6> $validators </h6>
+      <div ng-form="zipForm">
+        <input zip-validator type="text" name="zc" ng-model="vm.zipcode"/>
+        {{vm.zipcode}}
+        <div ng-messages="zipForm.zc.$error" ng-show="zipForm.zc.$dirty" ng-if="zipForm.zc.$touched">
+          <div ng-message="zipValidator ">"Invalid zipcode"</div>
+        </div>
+      </div>
      </tab>
      <tab label="Tab 3">
       Tab 3 contents!

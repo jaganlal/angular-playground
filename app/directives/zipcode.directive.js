@@ -19,7 +19,7 @@
           else if(parseInt(value, 10)) {
             var originalValue = value;
             value = parseInt(value, 10);
-            return_value = value;
+            return_value = value+'';
             view_value = return_value;
             ngModel.$setValidity('is_valid', true);
 
@@ -46,11 +46,11 @@
           var return_value;
           if(value && value.length) {
             value = value.substr(0, 5);
-            return_value = Number(value);
+            return_value = Number(value)+'';
           }
           else if(parseInt(value, 10)) {
             var s = String(value).substr(0, 5);
-            return_value = Number(s);
+            return_value = Number(s)+'';
           }
 
           view_value = return_value;

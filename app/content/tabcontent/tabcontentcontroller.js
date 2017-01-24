@@ -2,6 +2,7 @@
   'use strict';
 
   function TabContentController($log) {
+    this.zipcode = '';
   }
 
   TabContentController.$inject = ['$log'];

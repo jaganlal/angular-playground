@@ -2,7 +2,6 @@
   'use strict';
   function tabController($log) {
     this.$onInit = function() {
-      this.zipcode = '86501323a';
       this.tab = {
         label: this.label, 
         selected: false
@@ -23,8 +22,6 @@
     // templateUrl: 'app/components/tab/tab.html', 
     template: `
       <div class="tabs__content" ng-if="$ctrl.tab.selected">
-        <input zipcode type="text" ng-model="$ctrl.zipcode"/>
-        {{$ctrl.zipcode}}
         <div ng-transclude></div>
       </div>
     `,
