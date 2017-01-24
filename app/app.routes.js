@@ -37,6 +37,22 @@
             templateUrl: './app/footer/footer.html'
           }
         }
+      })
+      .state('services', {
+        url: '/services', 
+        views: {
+          'nav': {
+            templateUrl: './app/nav/nav.html'
+          }, 
+          '': {
+            templateUrl: './app/content/backendcontent/backend-content.html', 
+            controller: 'BackendContentController', 
+            controllerAs: 'vm'
+          }, 
+          'footer': {
+            templateUrl: './app/footer/footer.html'
+          }
+        }
       });
   }
 
