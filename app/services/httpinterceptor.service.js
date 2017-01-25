@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  function HttpInterceptor($q, $log) {
+  function HttpInterceptor($q, $log, $cookies) {
     var interceptor = {
       request: function(config) {
         $log.log("HttpInterceptor::request");
@@ -16,6 +16,7 @@
 
       response: function(response) {
         $log.log("HttpInterceptor::response");
+        $log.log("response token: "+$cookies.get('token'));
 
         return response;
       }, 
@@ -30,7 +31,7 @@
     return interceptor;
   }
 
-  HttpInterceptor.$inject = ['$q', '$log'];
+  HttpInterceptor.$inject = ['$q', '$log', '$cookies'];
 
   angular.module('jtAngularPlayground').service('HttpInterceptor', HttpInterceptor);
 

@@ -4,6 +4,7 @@
   angular
     .module('jtAngularPlayground', [
       'ngMessages', 
+      'ngCookies', 
       'ui.router'
     ]);
 }());
