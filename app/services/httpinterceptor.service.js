@@ -4,7 +4,6 @@
   function HttpInterceptor($q, $log, $cookies) {
     var interceptor = {
       request: function(config) {
-        $log.log("HttpInterceptor::request");
         return config;
       }, 
 
@@ -15,8 +14,7 @@
       },
 
       response: function(response) {
-        $log.log("HttpInterceptor::response");
-        $log.log("response token: "+$cookies.get('token'));
+        $log.log("Response Token: "+$cookies.get('token'));
 
         return response;
       }, 
