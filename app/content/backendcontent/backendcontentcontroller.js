@@ -1,9 +1,10 @@
 (function() {
   'use strict';
 
-  function BackendContentController($log, $http, $cookies) {
+  function BackendContentController($log, $http, $cookies, $q) {
     this.$onInit = function () {
       this.beContent;
+      this.defer;
 
       var me = this;
       $http.get('http://localhost:3000/services/token')
@@ -17,7 +18,8 @@
 
     this.getName = function() {
       var me = this;
-      $http.get('http://localhost:3000/services/name')
+      this.defer = $q.defer();
+      $http.get('http://localhost:3000/services/name', {timeout: this.defer.promise})
         .then(function successCallback(response) {
           if(response.data) {
             me.beContent = response.data.name;
@@ -28,10 +30,20 @@
         }, 
         function errorCallback(response) {
           me.beContent = "Error";
+        })
+        .catch(function(err) {
+          me.beContent = "Response Error";
+        })
+        .finally(function(err) {
+          $log.log("Finally Block");
         });
+    }
+
+    this.cancel = function() {
+      this.defer.resolve("User Cancelled!!!");
     }
   }
 
-  BackendContentController.$inject = ['$log', '$http', '$cookies'];
+  BackendContentController.$inject = ['$log', '$http', '$cookies', '$q'];
   angular.module('jtAngularPlayground').controller('BackendContentController', BackendContentController);
 }());
