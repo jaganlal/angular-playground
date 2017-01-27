@@ -5,6 +5,7 @@
     .module('jtAngularPlayground', [
       'ngMessages', 
       'ngCookies', 
+      'ngSanitize', 
       'ui.router'
     ]);
 }());

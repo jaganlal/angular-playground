@@ -1,6 +1,6 @@
 <div class="tab-content">
   <tabs selected="0">
-    <tab label="Tab 1">
+    <tab label="parsersandformatters">
       <h6> $parsers &amp; $formatters </h6>
       <div ng-form="zipForm">
         <input zipcode type="text" name="zc" ng-model="vm.zipcode" required />
@@ -11,7 +11,7 @@
         </div>
       </div>
      </tab>
-     <tab label="Tab 2">
+     <tab label="validators">
       <h6> $validators </h6>
       <div ng-form="zipForm">
         <input zip-validator type="text" name="zc" ng-model="vm.zipcode"/>
@@ -21,8 +21,15 @@
         </div>
       </div>
      </tab>
-     <tab label="Tab 3">
-      Tab 3 contents!
+     <tab label="XSS">
+     <h6> XSS </h6>
+      <span>Boom</span>
+      <input type="text" name="txt" ng-model="vm.danger"/>
+      <br/>
+      {{$eval('alert(1)')}}
+      Expression: {{vm.danger}}
+      <br/>
+      Binding: <span ng-bind-html="vm.danger"></span>
      </tab>
   </tabs>
 </div>
