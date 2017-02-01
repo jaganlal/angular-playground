@@ -1,19 +1,23 @@
 (function() {
   'use strict';
 
-  function BackendContentController($log, $http, $cookies, $q) {
+  function BackendContentController($log, $http, $cookies, $q, $window) {
     this.$onInit = function () {
       this.beContent;
       this.defer;
+      this.user = {
+        username: '', 
+        password: ''
+      }
 
       var me = this;
-      $http.get('http://localhost:3000/services/token')
-        .then(function successCallback(response) {
-          $log.log("Token: "+$cookies.get('token'));
-        }, 
-        function errorCallback(response) {
-          me.beContent = "Error";
-        });
+      // $http.get('http://localhost:3000/services/token')
+      //   .then(function successCallback(response) {
+      //     $log.log("Token: "+$cookies.get('token'));
+      //   }, 
+      //   function errorCallback(response) {
+      //     me.beContent = "Error";
+      //   });
     }
 
     this.getName = function() {
@@ -41,9 +45,22 @@
 
     this.cancel = function() {
       this.defer.resolve("User Cancelled!!!");
+    }, 
+
+    this.login = function(form) {
+      $http.post('http://localhost:3000/authenticate', {username: this.user.username, password: this.user.password})
+      .then(function successCallback(result) {
+        $window.sessionStorage.token = result.data.token;
+        $log.log(result.data.token);
+      }, function errorCallback (result) {
+        $log.log("authenticate failed");
+      })
+      .catch(function (err) {
+        $log.log("authenticate throwed expection!!!");
+      })
     }
   }
 
-  BackendContentController.$inject = ['$log', '$http', '$cookies', '$q'];
+  BackendContentController.$inject = ['$log', '$http', '$cookies', '$q', '$window'];
   angular.module('jtAngularPlayground').controller('BackendContentController', BackendContentController);
 }());
