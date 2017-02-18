@@ -1,6 +1,8 @@
 (function() {
   'use strict';
 
+  angular.module('jtAngularPlayground').directive('zipcode', isZipCodeValid)
+
   function isZipCodeValid () {
     return {
       restrict: 'A', 
@@ -59,8 +61,6 @@
         });
       }
     }
-  }
-
-  angular.module('jtAngularPlayground').directive('zipcode', isZipCodeValid)
+  }  
 
 }());

@@ -1,6 +1,8 @@
 (function() {
   'use strict';
 
+  angular.module('jtAngularPlayground').directive('zipValidator', zipValidator)
+
   function zipValidator() {
     return {
       restrict: 'A', 
@@ -30,6 +32,4 @@
       }
     }
   }
-
-  angular.module('jtAngularPlayground').directive('zipValidator', zipValidator)
 }())

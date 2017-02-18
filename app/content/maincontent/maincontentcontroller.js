@@ -2,10 +2,12 @@
   'use strict';
 
   function MainContentController($log, timingFactory, timingService) {
-    this.today = moment().format('MMM Do YYYY, hh:mm:ss a');
-    this.classTimings = [];
-    this.timeAdded = moment();
-    $log.log(this.today);
+
+    this.$onInit = function() {
+      this.today = moment().format('MMM Do YYYY, hh:mm:ss a');
+      this.classTimings = [];
+      this.timeAdded = moment();
+    }
 
     this.constructClassTimingsToDisplay = function(classtime, status) {
       var timeselected = moment(classtime);
