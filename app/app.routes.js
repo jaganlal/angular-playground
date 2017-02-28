@@ -1,63 +1,57 @@
 (function() {
   'use strict';  
 
+  angular.module('jtAngularPlayground').config(RouteConfig);
+
   function RouteConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     $locationProvider.html5Mode(true).hashPrefix('!');
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/main');
 
     $stateProvider
       .state('home', {
         url: '/', 
+        abstract: true,
         views: {
           'nav': {
             templateUrl: './app/nav/nav.html'
           }, 
-          '': {
+          'footer': {
+            templateUrl: './app/footer/footer.html'
+          }
+        }
+      })
+      .state('home.main', {
+        url: 'main', 
+        views: {
+          '@': {
             templateUrl: './app/content/maincontent/main-content.html', 
             controller: 'MainContentController', 
             controllerAs: 'vm'
-          }, 
-          'footer': {
-            templateUrl: './app/footer/footer.html'
           }
         }
       })
-      .state('almanac', {
-        url: '/almanac', 
+      .state('home.almanac', {
+        url: 'almanac', 
         views: {
-          'nav': {
-            templateUrl: './app/nav/nav.html'
-          }, 
-          '': {
+          '@': {
             templateUrl: './app/content/tabcontent/tab-content.html', 
             controller: 'TabContentController', 
             controllerAs: 'vm'
-          }, 
-          'footer': {
-            templateUrl: './app/footer/footer.html'
           }
         }
       })
-      .state('services', {
-        url: '/services', 
+      .state('home.services', {
+        url: 'services', 
         views: {
-          'nav': {
-            templateUrl: './app/nav/nav.html'
-          }, 
-          '': {
+          '@': {
             templateUrl: './app/content/backendcontent/backend-content.html', 
             controller: 'BackendContentController', 
             controllerAs: 'vm'
-          }, 
-          'footer': {
-            templateUrl: './app/footer/footer.html'
           }
         }
       });
   }
 
   RouteConfig.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
-
-  angular.module('jtAngularPlayground').config(RouteConfig);
   
 }());

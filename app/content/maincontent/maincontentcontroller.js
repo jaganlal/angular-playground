@@ -1,6 +1,8 @@
 (function() {
   'use strict';
 
+  angular.module('jtAngularPlayground').controller('MainContentController', MainContentController);
+
   function MainContentController($log, timingFactory, timingService) {
 
     this.$onInit = function() {
@@ -32,5 +34,4 @@
   }
 
   MainContentController.$inject = ['$log', 'timingFactory', 'timingService'];
-  angular.module('jtAngularPlayground').controller('MainContentController', MainContentController);
 }());
