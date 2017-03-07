@@ -6,6 +6,7 @@
       'ngMessages', 
       'ngCookies', 
       'ngSanitize', 
+      'ngResource',
       'ui.router'
     ]);
 }());

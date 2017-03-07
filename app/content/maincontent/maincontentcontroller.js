@@ -17,7 +17,7 @@
       var hr = timeselected.format('h:mm A');
       var hrplus1 = timeselected.add(1, 'h').format('h:mm A');
 
-      var ct = new timingFactory();
+      var ct = new TimingFactory();
       ct.timing = hr + " - " + hrplus1;
       ct.status = status || 'Schedule';
 
@@ -33,5 +33,5 @@
     }
   }
 
-  MainContentController.$inject = ['$log', 'timingFactory', 'timingService'];
+  MainContentController.$inject = ['$log', 'TimingFactory', 'TimingService'];
 }());

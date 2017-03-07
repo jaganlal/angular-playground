@@ -5,9 +5,16 @@
   <button type="button" class="btn btn-primary" ng-click="vm.getName()">Get Name</button>
   <button type="button" class="btn btn-danger" ng-click="vm.cancel()">Cancel</button>
 
-  <form ng-submit="vm.login(form)">
-    <input type="text" ng-model="vm.user.username" name="username">
-    <input type="password" ng-model="vm.user.password" name="password">
+  <form ng-submit="vm.register(form)" ng-hide="vm.userprofile.token.length">
+    <input type="email" ng-model="vm.userprofile.email" name="email">
+    <input type="password" ng-model="vm.userprofile.password" name="password">
+
+    <button type="submit" class="btn btn-primary">Register</button>
+  </form>
+
+  <form ng-submit="vm.login(form)" ng-show="vm.userprofile.token.length">
+    <input type="email" ng-model="vm.userprofile.email" name="email">
+    <input type="password" ng-model="vm.userprofile.password" name="password">
 
     <button type="submit" class="btn btn-primary">Login</button>
   </form>

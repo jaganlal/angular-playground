@@ -3,10 +3,10 @@
 
   angular.module('jtAngularPlayground').config(Config);
 
-  function Config($httpProvider, $logProvider, timingFactoryProvider) {
+  function Config($httpProvider, $logProvider, TimingFactoryProvider) {
 
     // notice how timingFactory is injected as provider and also consumed
-    var tfp = new (timingFactoryProvider.$get())();
+    var tfp = new (TimingFactoryProvider.$get())();
     tfp.timings = Date();
 
     $httpProvider.defaults.withCredentials = true;
@@ -14,5 +14,5 @@
     $logProvider.debugEnabled(true);
   }
 
-  Config.$inject = ['$httpProvider', '$logProvider', 'timingFactoryProvider'];
+  Config.$inject = ['$httpProvider', '$logProvider', 'TimingFactoryProvider'];
 }());

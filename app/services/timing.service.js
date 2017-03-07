@@ -1,9 +1,9 @@
 (function() {
   'use strict';
 
-  angular.module('jtAngularPlayground').service('timingService', timing);
+  angular.module('jtAngularPlayground').service('TimingService', Timing);
 
-  function timing() {
+  function Timing() {
     this.timing = '',
     this.status = 'Schedule'
   }

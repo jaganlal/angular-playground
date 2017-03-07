@@ -1,10 +1,10 @@
 (function() {
   'use strict';
 
-  angular.module('jtAngularPlayground').factory('timingFactory', timing);
+  angular.module('jtAngularPlayground').factory('TimingFactory', Timing);
 
-  function timing() {
-    return function timingObject() {
+  function Timing() {
+    return function TimingObject() {
       this.timing = '';
       this.status = 'Schedule';
     }
