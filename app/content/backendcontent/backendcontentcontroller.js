@@ -51,6 +51,7 @@
 
     this.register = function(form) {
       var me = this;
+      this.userprofile.status = '';
       return this.User.save(this.userprofile).$promise
         .then(function successCallback(result) {
           if(result.token) {
@@ -62,10 +63,11 @@
             $log.log('Empty Token');
           }
         }, function errorCallback (result) {
-          $log.log("authenticate failed");
+          me.userprofile.status = result.data;
+          $log.log(result.data);
         })
         .catch(function (err) {
-          $log.log("authenticate throwed expection!!!");
+          $log.log("register throwed expection!!!");
         })
     }, 
 
