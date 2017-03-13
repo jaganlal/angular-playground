@@ -3,6 +3,7 @@
 
   function BackendContentController($log, $http, $cookies, $q, $window, User) {
     this.User = User;
+    this.currentUser = null;
     this.$onInit = function () {
       this.beContent;
       this.defer;
@@ -10,7 +11,7 @@
         email: '', 
         password: '', 
         token: ''
-      }
+      };
 
       var me = this;
       // $http.get('http://localhost:3000/services/token')
@@ -72,16 +73,41 @@
     }, 
 
     this.login = function(form) {
+      var me = this;
+      this.userprofile.status = '';
       $http.post('http://localhost:3000/authenticate', {email: this.userprofile.email, password: this.userprofile.password})
       .then(function successCallback(result) {
         $window.sessionStorage.token = result.data.token;
         $log.log(result.data.token);
+        me.currentUser = 'me';
       }, function errorCallback (result) {
+        me.userprofile.status = result.data;
         $log.log("login failed");
       })
       .catch(function (err) {
-        $log.log("login throwed expection!!!");
+        $log.log("login throwed expection!!! "+err.message);
       })
+    }
+
+    this.me = function() {
+      if(this.currentUser && this.currentUser !== 'me') {
+        return;
+      }
+
+      var self = this;
+      User.get().$promise
+        .then(function successCallback(result) {
+          self.currentUser = JSON.stringify({
+            _id: result._id, 
+            email: result.email, 
+            role: result.role
+          });
+        }, function errorCallback (result) {
+          $log.log("me failed");
+        })
+        .catch(function (err) {
+          $log.log("me throwed expection!!! "+err.message);
+        });
     }
   }
 
