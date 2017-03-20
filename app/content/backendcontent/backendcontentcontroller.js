@@ -50,6 +50,19 @@
       this.defer.resolve("User Cancelled!!!");
     }, 
 
+    this.getStyle = function() {
+      var me = this;
+      $http.get('http://localhost:3000/style')
+        .then(style => {
+          if(style && style.data) {
+            $log.log(JSON.stringify(style.data));
+          }
+        })
+        .catch(err => {
+          $log.error('Error in get style: '+err.message);
+        })
+    }
+
     this.register = function(form) {
       var me = this;
       this.userprofile.status = '';

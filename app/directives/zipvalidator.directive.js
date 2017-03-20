@@ -9,7 +9,7 @@
       require: 'ngModel', 
       link: function(scope, elem, attr, ngModel) {
         var view_value;
-        ngModel.$validators.zipValidator = function(value) {
+        ngModel.$validators.zip = function(value) {
           var isValid;
           if(value.length > 5) {
             isValid = false;

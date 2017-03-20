@@ -1,5 +1,6 @@
 (function() {
   'use strict';
+
   function tabController($log) {
     this.$onInit = function() {
       this.tab = {
@@ -63,8 +64,8 @@
 
   tabsController.$inject = ['$log'];
 
-
   angular.module('jtAngularPlayground')
   .component('tab', tab)
   .component('tabs', tabs);
+
 }());
